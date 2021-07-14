@@ -37,3 +37,9 @@ With [packer.nvim](https://github.com/wbthomason/packer.nvim)
 4. :RubyRun                                               *ruby.nvim-:rubyrun*
 
 Runs current Ruby file in a floating window.
+
+
+==============================================================================
+5. :RubyAlternate                                   *ruby.nvim-:rubyalternate*
+
+Alternate between a Ruby file and its test file.

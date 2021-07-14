@@ -1,0 +1,39 @@
+==============================================================================
+1. ruby.nvim                                             *ruby.nvim-ruby.nvim*
+
+
+ruby.nvim
+
+
+Ruby development plugin for Neovim. Highly unstable.
+==============================================================================
+2. Installation                                       *ruby.nvim-installation*
+
+
+With [vim-plug](https://github.com/junegunn/vim-plug)
+
+>
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'vinibispo/ruby.nvim', {'for': 'ruby'}
+<
+
+
+With [packer.nvim](https://github.com/wbthomason/packer.nvim)
+
+>
+    use {
+        'vinibispo/ruby.nvim',
+        requires={'nvim-lua/plenary.nvim'},
+        ft = {'ruby'}
+    }
+<
+
+
+==============================================================================
+3. Commands                                               *ruby.nvim-commands*
+
+
+==============================================================================
+4. :RubyRun                                               *ruby.nvim-:rubyrun*
+
+Runs current Ruby file in a floating window.

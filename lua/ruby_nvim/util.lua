@@ -24,15 +24,10 @@ local git_root = function(file)
 end
 
 local split_path = function(path)
-  -- TODO try to read sep from Plenary to make it work in non-Unix OS:
-  -- https://github.com/nvim-lua/plenary.nvim/blob/8bae2c1fadc9ed5bfcfb5ecbd0c0c4d7d40cb974/lua/plenary/path.lua#L20-L31
-  local sep = "/"
   local matches = {}
-
-  for match in (path .. sep):gmatch("(.-)" .. sep) do
+  for match in (path .. Path.path.sep):gmatch("(.-)" .. Path.path.sep) do
     table.insert(matches, match)
   end
-
   return matches
 end
 

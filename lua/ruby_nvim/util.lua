@@ -13,7 +13,7 @@ local git_root = function(file)
   local opts = {
     command = "git",
     args = {"rev-parse", "--show-toplevel"},
-    cwd = path:parent(),
+    cwd = path:parent().filename,
   }
   local job = Job:new(opts):sync()
   if job == nil then

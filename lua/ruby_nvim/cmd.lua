@@ -16,22 +16,16 @@ local run_in_floating_window = function(cmd, args)
   local win = window.percentage_range_window(tonumber("0.8"), tonumber("0.8"))
   local job_id = api.nvim_open_term(win.bufnr, {})
 
-  Job:new(
-    {
-      command = cmd,
-      args = args,
-      on_stdout = schedule_wrap(
-        function(_, data)
-          api.nvim_chan_send(job_id, data .. "\r\n")
-        end
-      ),
-      on_stderr = schedule_wrap(
-        function(_, data)
-          api.nvim_chan_send(job_id, data .. "\r\n")
-        end
-      ),
-    }
-  ):start()
+  Job:new({
+    command = cmd,
+    args = args,
+    on_stdout = schedule_wrap(function(_, data)
+      api.nvim_chan_send(job_id, data .. "\r\n")
+    end),
+    on_stderr = schedule_wrap(function(_, data)
+      api.nvim_chan_send(job_id, data .. "\r\n")
+    end),
+  }):start()
 end
 
 -- :RubyRun
@@ -87,6 +81,33 @@ M.test = function(current_line)
   end
 
   run_in_floating_window(opts.load("test_cmd"), args)
+end
+
+-- :RubyBrowseGem
+
+M.browse_gem = function()
+  local line = api.nvim_get_current_line()
+  local gem_word = 'gem'
+  local gem_index = line:find(gem_word)
+  local gem_with_space_and_quote_length = ('gem' .. ' "'):len()
+  local quote_and_comma_length = ('",'):len()
+  local comma_index = line:find(',')
+  local gem_name = ''
+  if not gem_index then
+    api.nvim_err_writeln(string.format("There is no gem in this line"))
+    return
+  end
+  if not comma_index then
+    local line_length = line:len()
+    local last_quote_index = line_length - 1
+    gem_name = line:sub(gem_index + gem_with_space_and_quote_length, last_quote_index)
+  else
+    gem_name = line:sub(gem_index + gem_with_space_and_quote_length,
+                        comma_index - quote_and_comma_length)
+  end
+  local uri = "https://rubygems.org/gems/" .. gem_name
+
+  Job:new{"xdg-open", uri}:start()
 end
 
 return M

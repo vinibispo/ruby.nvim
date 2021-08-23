@@ -84,7 +84,6 @@ M.test = function(current_line)
 end
 
 -- :RubyBrowseGem
-
 M.browse_gem = function()
   local line = api.nvim_get_current_line()
   local gem_index = line:find('gem')

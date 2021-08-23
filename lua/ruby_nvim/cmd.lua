@@ -87,8 +87,7 @@ end
 
 M.browse_gem = function()
   local line = api.nvim_get_current_line()
-  local gem_word = 'gem'
-  local gem_index = line:find(gem_word)
+  local gem_index = line:find('gem')
   local gem_with_space_and_quote_length = ('gem' .. ' "'):len()
   local quote_and_comma_length = ('",'):len()
   local comma_index = line:find(',')

@@ -42,7 +42,7 @@ M.alternate = function()
   end
 
   local alternate = util.alternate(path)
-  if not alternate:exists() then
+  if alternate == nil then
     print("could not find an alternate file")
     return
   end

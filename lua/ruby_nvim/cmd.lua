@@ -37,13 +37,13 @@ end
 M.alternate = function()
   local path = Path:new(vim.fn.expand("%"))
   if not path:exists() or not util.is_ruby(path) then
-    print("buffer is empty or file is not a ruby file")
+    vim.notify(no_file_or_not_rb_file, "warn")
     return
   end
 
   local alternate = util.alternate(path)
   if alternate == nil then
-    print("could not find an alternate file")
+    vim.notify("could not find an alternate file", "warn")
     return
   end
 
@@ -56,13 +56,13 @@ M.test = function(current_line)
   local path = Path:new(vim.fn.expand("%"))
 
   if not util.is_ruby(path) then
-    print(no_file_or_not_rb_file)
+    vim.notify(no_file_or_not_rb_file, "warn")
     return
   end
 
   if not util.is_test(path) then
     if current_line then
-      print("not in a test file")
+      vim.notify("not in a test file", "error")
       return
     else
       path = util.alternate(path)
@@ -70,7 +70,7 @@ M.test = function(current_line)
   end
 
   if not path then
-    print("could not find a test file")
+    vim.notify("could not find a test file", "warn")
     return
   end
 
@@ -92,7 +92,7 @@ M.browse_gem = function()
   local comma_index = line:find(',')
   local gem_name = ''
   if not gem_index then
-    api.nvim_err_writeln(string.format("There is no gem in this line"))
+    vim.notify(string.format("There is no gem in this line"), "error")
     return
   end
   if not comma_index then

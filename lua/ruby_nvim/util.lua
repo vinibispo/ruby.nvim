@@ -17,7 +17,7 @@ local git_root = function(file)
   }
   local job = Job:new(opts):sync()
   if job == nil then
-    print("git not installed or not in a git repository")
+    vim.notify("git not installed or not in a git repository", "error")
     return nil
   end
 

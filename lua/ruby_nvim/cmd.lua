@@ -10,7 +10,7 @@ local schedule_wrap = vim.schedule_wrap
 local M = {}
 
 local no_file_or_not_rb_file = "buffer is empty or file is not a ruby file"
-local gem_not_found_error = "gem not found"
+local no_gem_in_cursor = "There is no gem close to the cursor"
 
 local run_in_floating_window = function(cmd, args)
   local win = window.percentage_range_window(tonumber("0.8"), tonumber("0.8"))
@@ -87,7 +87,7 @@ end
 M.browse_gem = function()
   local node = util.get_method_relevant_to_cursor()
   if node == nil then
-    vim.notify(gem_not_found_error, "error")
+    vim.notify(no_gem_in_cursor, "error")
     return
   end
 
@@ -95,7 +95,7 @@ M.browse_gem = function()
 
   local gem_name = util.get_gem_name(node, bufnr)
   if gem_name == nil then
-    vim.notify(gem_not_found_error, "error")
+    vim.notify(no_gem_in_cursor, "error")
     return
   end
 

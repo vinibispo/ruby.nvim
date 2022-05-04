@@ -131,11 +131,11 @@ M.get_gem_name = function (node, bufnr)
       local method = node:field('method')[1]
       local method_name = vim.treesitter.query.get_node_text(method, bufnr)
       if method_name == 'gem' then
-        local method_args = node:field('arguments')[1] --that when using get_node_text has text 'aws-sdk-s3', '~> 1'
-        local gem_node_with_quotes = method_args:child(0) -- that when using get_node_text has text 'aws-sdk-s3'
-        local gem_node = gem_node_with_quotes:child(1) -- that when usin get_node_text has text aws-sdk-s3
-        local gem_name = vim.treesitter.query.get_node_text(gem_node, bufnr)
-        if gem_name ~= "'" then
+        local method_args = node:field('arguments')[1] --that has user_data { 'aws-sdk-s3', '~> 1' }
+        local gem_node_with_quotes = method_args:child(0) -- that has user_data { "'", "aws-sdk-s3", "'" }
+        if gem_node_with_quotes:child_count() > 2 then
+          local gem_node = gem_node_with_quotes:child(1) -- that  has user_data { "aws-sdk-s3" }
+          local gem_name = vim.treesitter.query.get_node_text(gem_node, bufnr)
           return gem_name
         end
       end

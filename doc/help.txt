@@ -66,3 +66,8 @@ Alternate between a Ruby file and its test file.
 Runs the tests for the current file. If the file is not a test file, it tries
 to find the (alternate) test file. If run with `!` and it is a test file, runs
 only the test under the cursor.
+
+==============================================================================
+8. :RubyBrowseGem                                          *ruby.nvim-:rubybrowsegem*
+
+Searches gem that is on cursor line in rubygems.org

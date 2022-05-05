@@ -16,7 +16,10 @@ Example with [packer.nvim](https://github.com/wbthomason/packer.nvim/):
 use {
   'vinibispo/ruby.nvim',
   ft = {'ruby'}, -- optional
-  requires = {'nvim-lua/plenary.nvim'},
+  requires = {
+    'nvim-lua/plenary.nvim',
+    'nvim-treesitter/nvim-treesitter'
+    },
   config = function() -- optional
     require("ruby_nvim").setup({
       test_cmd = "ruby",  -- the default value

@@ -2,7 +2,6 @@
 local Job = require("plenary.job")
 local Path = require("plenary.path")
 local window = require("plenary.window.float")
-local ruby = require("ruby_nvim")
 local opts = require("ruby_nvim.opts")
 local util = require("ruby_nvim.util")
 local api = vim.api
@@ -11,6 +10,7 @@ local schedule_wrap = vim.schedule_wrap
 local M = {}
 
 local no_file_or_not_rb_file = "buffer is empty or file is not a ruby file"
+local no_gem_in_cursor = "There is no gem close to the cursor"
 
 local run_in_floating_window = function(cmd, args)
   local win = window.percentage_range_window(tonumber("0.8"), tonumber("0.8"))
@@ -85,24 +85,20 @@ end
 
 -- :RubyBrowseGem
 M.browse_gem = function()
-  local line = api.nvim_get_current_line()
-  local gem_index = line:find('gem')
-  local gem_with_space_and_quote_length = 5
-  local quote_and_comma_length = 2
-  local comma_index = line:find(',')
-  local gem_name = ''
-  if not gem_index then
-    vim.notify(string.format("There is no gem in this line"), "error")
+  local node = util.get_method_relevant_to_cursor()
+  if node == nil then
+    vim.notify(no_gem_in_cursor, "error")
     return
   end
-  if not comma_index then
-    local line_length = line:len()
-    local last_quote_index = line_length - 1
-    gem_name = line:sub(gem_index + gem_with_space_and_quote_length, last_quote_index)
-  else
-    gem_name = line:sub(gem_index + gem_with_space_and_quote_length,
-                        comma_index - quote_and_comma_length)
+
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  local gem_name = util.get_gem_name(node, bufnr)
+  if gem_name == nil then
+    vim.notify(no_gem_in_cursor, "error")
+    return
   end
+
   local uri = "https://rubygems.org/gems/" .. gem_name
 
   Job:new{"xdg-open", uri}:start()

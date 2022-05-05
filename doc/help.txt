@@ -62,6 +62,6 @@ Alternate between a Ruby file and its test file.
 ==============================================================================
 7. :RubyTest[!]                                          *ruby.nvim-:rubytest*
 
-Runs the tests for the currente file. If the file is not a test file, it tries
+Runs the tests for the current file. If the file is not a test file, it tries
 to find the (alternate) test file. If run with `!` and it is a test file, runs
 only the test under the cursor.

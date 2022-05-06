@@ -1,4 +1,4 @@
-local defaults = {test_cmd = "ruby", test_args={}}
+local defaults = { test_cmd = "ruby", test_args = {} }
 local options = vim.deepcopy(defaults)
 local M = {}
 

@@ -12,7 +12,7 @@ local git_root = function(file)
 
   local opts = {
     command = "git",
-    args = {"rev-parse", "--show-toplevel"},
+    args = { "rev-parse", "--show-toplevel" },
     cwd = path:parent().filename,
   }
   local job = Job:new(opts):sync()
@@ -27,7 +27,7 @@ end
 local function get_methods(root)
   local keys = {}
   for node, name in root:iter_children() do
-    if name == 'method' then
+    if name == "method" then
       table.insert(keys, node)
     end
 
@@ -68,8 +68,7 @@ M.is_ruby = function(path)
 end
 
 M.is_test = function(path)
-  return string.match(path.filename, "_test%.rb$") or
-           string.match(path.filename, "_spec%.rb$")
+  return string.match(path.filename, "_test%.rb$") or string.match(path.filename, "_spec%.rb$")
 end
 
 M.alternate = function(file_path)
@@ -79,11 +78,11 @@ M.alternate = function(file_path)
 
   local parts = split_path(path)
   local base_name = parts[#parts]
-  local context = {git_root = git_root(path), path = parts}
+  local context = { git_root = git_root(path), path = parts }
 
-  local main_directories = {"app", "lib", ""}
-  local test_directories = {"test", "spec"}
-  local test_subdirectories = {nil, "lib"}
+  local main_directories = { "app", "lib", "" }
+  local test_directories = { "test", "spec" }
+  local test_subdirectories = { nil, "lib" }
 
   for _, test_directory in pairs(test_directories) do
     local suffix_regex = test_suffix(test_directory, true)
@@ -117,7 +116,7 @@ M.alternate = function(file_path)
   end
 end
 
-M.all_methods = function ()
+M.all_methods = function()
   local bufnr = vim.api.nvim_get_current_buf()
   local ft = vim.api.nvim_buf_get_option(bufnr, "ft")
   local tree = vim.treesitter.get_parser(bufnr, ft):parse()[1]
@@ -125,13 +124,13 @@ M.all_methods = function ()
   return get_methods(root)
 end
 
-M.get_gem_name = function (node, bufnr)
+M.get_gem_name = function(node, bufnr)
   while node ~= nil do
-    if node:type() == 'call' then
-      local method = node:field('method')[1]
+    if node:type() == "call" then
+      local method = node:field("method")[1]
       local method_name = vim.treesitter.query.get_node_text(method, bufnr)
-      if method_name == 'gem' then
-        local method_args = node:field('arguments')[1] --that has user_data { 'aws-sdk-s3', '~> 1' }
+      if method_name == "gem" then
+        local method_args = node:field("arguments")[1] --that has user_data { 'aws-sdk-s3', '~> 1' }
         local gem_node_with_quotes = method_args:child(0) -- that has user_data { "'", "aws-sdk-s3", "'" }
         if gem_node_with_quotes:child_count() > 2 then
           local gem_node = gem_node_with_quotes:child(1) -- that  has user_data { "aws-sdk-s3" }
@@ -144,7 +143,7 @@ M.get_gem_name = function (node, bufnr)
   end
 end
 
-M.get_method_relevant_to_cursor = function ()
+M.get_method_relevant_to_cursor = function()
   local cursor_line = vim.api.nvim_win_get_cursor(0)[1]
   local previous_node = nil
   for _, node in pairs(M.all_methods()) do
@@ -161,7 +160,5 @@ M.get_method_relevant_to_cursor = function ()
     previous_node = node
   end
 end
-
-
 
 return M

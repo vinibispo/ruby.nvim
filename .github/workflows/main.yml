@@ -29,4 +29,4 @@ jobs:
       - uses: JohnnyMorganz/stylua-action@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --color always --check lua/ test/ruby_nvim
+          args: --color always --check lua tests/ruby_nvim

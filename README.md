@@ -1,6 +1,7 @@
-# ruby.nvim
-
+<div align="center">
+<h1>ruby.nvim</h1>
 Ruby development plug-in for Neovim. Highly unstable.
+</div>
 
 # Topics
 
@@ -81,7 +82,6 @@ Alternate between a Ruby file and its test file.
 ### :RubyTest[!]
 
 Runs the test for the current file. If the file is not a test file, it tries to to find the (alternate) test file. If run with `!` and it is a test files, runs only the test under the cursor.
-
 
 ## Gems
 

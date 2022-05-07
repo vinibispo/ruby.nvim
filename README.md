@@ -4,11 +4,7 @@ Ruby development plug-in for Neovim. Highly unstable.
 
 # Motivation
 
-This is a personal exercise on moving features from 
-[go.nvim](https://github.com/npxbr/go.nvim/) to the Ruby world, using latest
-features from Neovim. The idea is to try to use Lua as much as possible,
-without relying too much on Ruby 3rd party libraries. The focus is to push Lua
-the most we can.
+This is a personal exercise on moving features from [go.nvim](https://github.com/ellisonleao/go.nvim) to the Ruby world, using latest features from Neovim. The idea is to try to use Lua as much as possible, without relying too much on Ruby 3rd party libraries. The focus is to push Lua the most we can.
 
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim/):
 

@@ -32,6 +32,4 @@ Plug 'vinibispo/ruby.nvim'
 ```
 
 ---
-# Disclaimer
 
-That is totally based on [go.nvim](https://github.com/npxbr/go.nvim).

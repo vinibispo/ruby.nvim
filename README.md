@@ -5,8 +5,11 @@ Ruby development plug-in for Neovim. Highly unstable.
 # Topics
 
 :large_blue_diamond: [Motivation](#motivation)
+
 :large_blue_diamond: [Installation](#installation)
+
 :large_blue_diamond: [Setup](#setup)
+
 :large_blue_diamond: [Commands](#commands)
 
 ---

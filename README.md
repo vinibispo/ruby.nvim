@@ -2,6 +2,15 @@
 
 Ruby development plug-in for Neovim. Highly unstable.
 
+# Topics
+
+:large_blue_diamond: [Motivation](#motivation)
+:large_blue_diamond: [Installation](#installation)
+:large_blue_diamond: [Setup](#setup)
+:large_blue_diamond: [Commands](#commands)
+
+---
+
 # Motivation
 
 This is a personal exercise on moving features from [go.nvim](https://github.com/ellisonleao/go.nvim) to the Ruby world, using latest features from Neovim. The idea is to try to use Lua as much as possible, without relying too much on Ruby 3rd party libraries. The focus is to push Lua the most we can.

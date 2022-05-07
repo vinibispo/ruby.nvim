@@ -1,9 +1,6 @@
 .PHONY: test prepare
 
-prepare:
-	@if [ ! -d "./vendor/plenary.nvim" ]; then git clone https://github.com/nvim-lua/plenary.nvim vendor/plenary.nvim; fi
-
-test: prepare
+test:
 	@nvim \
 		--headless \
 		--noplugin \

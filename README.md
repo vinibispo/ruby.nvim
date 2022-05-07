@@ -63,7 +63,7 @@ ruby_nvim.setup({
 
 | Command | Description |
 |:--|:--|
-| `:RubyRun [file]` | Runs given file (current or another) in a floating window |
-| `:RubyAlternate` | Alternate between a Ruby file and its test file. |
+| `:RubyRun [file]` | Runs `file` in a floating window (default: current file). |
+| `:RubyAlternate` | Alternate between a Ruby file and its test file, and vice-versa |
 | `:RubyTest[!]` | Runs the test for the current file. If the file is not a test file, it tries to to find the (alternate) test file. If run with `!` and it is a test files, runs only the test under the cursor. |
-| `:RubyBrowseGem` | Searches gem that is on cursor line in https://rubygems.org |
+| `:RubyBrowseGem` | Searches gem under the cursor line in [rubygems.org](https://rubygems.org). |

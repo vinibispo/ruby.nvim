@@ -49,9 +49,9 @@ the tests:
 
 
 ==============================================================================
-5. :RubyRun                                               *ruby.nvim-:rubyrun*
+5. :RubyRun [file]                                              *ruby.nvim-:rubyrun*
 
-Runs current Ruby file in a floating window.
+Runs given file (current or another) in a floating window
 
 
 ==============================================================================

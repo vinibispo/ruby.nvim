@@ -33,3 +33,18 @@ Plug 'vinibispo/ruby.nvim'
 
 ---
 
+# Setup
+
+## Default config
+
+Ruby.nvim comes with sane defaults so that you can get going without having to add much to your config
+
+```lua
+local ruby_nvim = require("ruby_nvim")
+
+ruby_nvim.setup({
+  test_cmd = "ruby" -- command that :RubyTest is gonna run,
+  test_args = {} -- args that :RubyTest is gonna run
+})
+```
+

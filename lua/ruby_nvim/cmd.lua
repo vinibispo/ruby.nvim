@@ -32,6 +32,7 @@ end
 
 -- :RubyRun
 M.run = function(file)
+  file = file or fn.expand("%")
   run_in_floating_window("ruby", { fn.expand(file) })
 end
 

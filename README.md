@@ -21,6 +21,8 @@ This is a personal exercise on moving features from [go.nvim](https://github.com
 
 # Installation
 
+Use at least a neovim stable version.
+
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 
 ```lua

@@ -6,13 +6,7 @@ if vim.version().minor < VIM_VERSION_MINOR_SUPPORTED then
 end
 
 vim.api.nvim_create_user_command("RubyRun", function(opts)
-  local arg
-  if opts.fargs ~= '' then
-    arg = opts.fargs[1]
-  else
-    arg = nil
-  end
-  ruby_cmd.run(arg)
+  ruby_cmd.run(opts.args[1])
 end, { nargs = '?', complete = 'file' })
 
 vim.api.nvim_create_user_command("RubyAlternate", function ()

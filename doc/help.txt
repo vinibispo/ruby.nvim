@@ -13,7 +13,6 @@ Ruby development plugin for Neovim. Highly unstable.
 With [vim-plug](https://github.com/junegunn/vim-plug)
 
 >
-    Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-treesitter/nvim-treesitter'
     Plug 'vinibispo/ruby.nvim', {'for': 'ruby'}
 <
@@ -24,56 +23,16 @@ With [packer.nvim](https://github.com/wbthomason/packer.nvim)
 >
     use {
         'vinibispo/ruby.nvim',
-        requires={'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter'},
+        requires={'nvim-treesitter/nvim-treesitter'},
         ft = {'ruby'} -- optional
     }
 <
 
-
 ==============================================================================
-3. Configuration
-
-The plugin accepts optional configuration for the command and arguments to run
-the tests:
-
->
-    require("ruby_nvim").setup({
-        test_cmd = "ruby", -- default
-        test_args = {}, -- default
-    })
-<
+3. Commands                                               *ruby.nvim-commands*
 
 
 ==============================================================================
-4. Commands                                               *ruby.nvim-commands*
-
-
-==============================================================================
-5. :RubyRun [file]                                              *ruby.nvim-:rubyrun*
-
-Deprecated in favor of `:term ruby %`.
-
-Runs given file (current or another) in a floating window.
-
-
-==============================================================================
-6. :RubyAlternate                                   *ruby.nvim-:rubyalternate*
-
-Deprecated in favor of: https://github.com/rgroli/other.nvim
-
-Alternate between a Ruby file and its test file.
-
-
-==============================================================================
-7. :RubyTest[!]                                          *ruby.nvim-:rubytest*
-
-Deprecated in favor of: https://github.com/nvim-neotest/neotest
-
-Runs the tests for the current file. If the file is not a test file, it tries
-to find the (alternate) test file. If run with `!` and it is a test file, runs
-only the test under the cursor.
-
-==============================================================================
-8. :RubyBrowseGem                                          *ruby.nvim-:rubybrowsegem*
+4. :RubyBrowseGem                                          *ruby.nvim-:rubybrowsegem*
 
 Searches gem that is on cursor line in rubygems.org

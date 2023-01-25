@@ -32,12 +32,14 @@ end
 
 -- :RubyRun
 M.run = function(file)
+  vim.notify("The command :RubyRun is deprecated in favor of :term ruby %", "warn")
   file = file or fn.expand("%")
   run_in_floating_window("ruby", { fn.expand(file) })
 end
 
 -- :RubyAlternate
 M.alternate = function()
+  vim.notify("The command :RubyTest is deprecated in favor of rgroli/other.nvim", "warn")
   local path = Path:new(vim.fn.expand("%"))
   if not path:exists() or not util.is_ruby(path) then
     vim.notify(no_file_or_not_rb_file, "warn")
@@ -55,6 +57,7 @@ end
 
 -- :RubyTest
 M.test = function(current_line)
+  vim.notify("The command :RubyTest is deprecated in favor of nvim-neotest/neotest", "warn")
   local current_line = current_line == "!"
   local path = Path:new(vim.fn.expand("%"))
 

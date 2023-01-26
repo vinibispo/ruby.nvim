@@ -7,18 +7,16 @@ end
 
 vim.api.nvim_create_user_command("RubyRun", function(opts)
   ruby_cmd.run(opts.args[1])
-end, { nargs = '?', complete = 'file' })
+end, { nargs = "?", complete = "file" })
 
-vim.api.nvim_create_user_command("RubyAlternate", function ()
+vim.api.nvim_create_user_command("RubyAlternate", function()
   ruby_cmd.alternate()
 end, { nargs = 0 })
 
-vim.api.nvim_create_user_command("RubyTest", function (opts)
+vim.api.nvim_create_user_command("RubyTest", function(opts)
   ruby_cmd.test(opts.bang)
 end, { bang = true })
 
-vim.api.nvim_create_user_command("RubyBrowseGem", function ()
+vim.api.nvim_create_user_command("RubyBrowseGem", function()
   ruby_cmd.browse_gem()
-end, {nargs = 0 })
-
-
+end, { nargs = 0 })

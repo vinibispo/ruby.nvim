@@ -16,18 +16,16 @@ local run_in_floating_window = function(cmd, args)
   local win = window.percentage_range_window(tonumber("0.8"), tonumber("0.8"))
   local job_id = api.nvim_open_term(win.bufnr, {})
 
-  Job
-    :new({
-      command = cmd,
-      args = args,
-      on_stdout = schedule_wrap(function(_, data)
-        api.nvim_chan_send(job_id, data .. "\r\n")
-      end),
-      on_stderr = schedule_wrap(function(_, data)
-        api.nvim_chan_send(job_id, data .. "\r\n")
-      end),
-    })
-    :start()
+  Job:new({
+    command = cmd,
+    args = args,
+    on_stdout = schedule_wrap(function(_, data)
+      api.nvim_chan_send(job_id, data .. "\r\n")
+    end),
+    on_stderr = schedule_wrap(function(_, data)
+      api.nvim_chan_send(job_id, data .. "\r\n")
+    end),
+  }):start()
 end
 
 -- :RubyRun

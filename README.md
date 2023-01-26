@@ -1,6 +1,8 @@
 <div align="center">
 <h1>ruby.nvim</h1>
 Ruby development plug-in for Neovim. Highly unstable.
+
+**⚠️ This plugin is deprecated. See [Commands](#commands) for alternatives.**
 </div>
 
 # Topics
@@ -63,9 +65,9 @@ ruby_nvim.setup({
 # Commands
 
 
-| Command | Description |
-|:--|:--|
-| `:RubyRun [file]` | Runs `file` in a floating window (default: current file). |
-| `:RubyAlternate` | Alternate between a Ruby file and its test file, and vice-versa |
-| `:RubyTest[!]` | Runs the test for the current file. If the file is not a test file, it tries to find the (alternate) test file. If run with `!` and it is a test files, runs only the test under the cursor. |
-| `:RubyBrowseGem` | Searches gem under the cursor line in [rubygems.org](https://rubygems.org). |
+| Command | Description | Status | Alternative |
+|:--|:--|---|---|
+| `:RubyRun [file]` | Runs `file` in a floating window (default: current file). | Deprecated | Use `:term ruby %` |
+| `:RubyAlternate` | Alternate between a Ruby file and its test file, and vice-versa | Deprecated | Use [`:Other`](https://github.com/rgroli/other.nvim) |
+| `:RubyTest[!]` | Runs the test for the current file. If the file is not a test file, it tries to find the (alternate) test file. If run with `!` and it is a test files, runs only the test under the cursor. | Deprecated | Use [`:lua require('neotest').run.run()`](https://github.com/nvim-neotest/neotest) |
+| `:RubyBrowseGem` | Searches gem under the cursor line in [rubygems.org](https://rubygems.org). | Unmaintained | |

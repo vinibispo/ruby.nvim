@@ -51,17 +51,23 @@ the tests:
 ==============================================================================
 5. :RubyRun [file]                                              *ruby.nvim-:rubyrun*
 
-Runs given file (current or another) in a floating window
+Deprecated in favor of `:term ruby %`.
+
+Runs given file (current or another) in a floating window.
 
 
 ==============================================================================
 6. :RubyAlternate                                   *ruby.nvim-:rubyalternate*
+
+Deprecated in favor of: https://github.com/rgroli/other.nvim
 
 Alternate between a Ruby file and its test file.
 
 
 ==============================================================================
 7. :RubyTest[!]                                          *ruby.nvim-:rubytest*
+
+Deprecated in favor of: https://github.com/nvim-neotest/neotest
 
 Runs the tests for the current file. If the file is not a test file, it tries
 to find the (alternate) test file. If run with `!` and it is a test file, runs
